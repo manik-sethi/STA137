@@ -1,0 +1,17 @@
+---
+title: "Final_Proj EDA"
+author: "Manik Sethi"
+date: "2025-05-31"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r load-data}
+
+load("./my_data.RData")
+
+
+```
