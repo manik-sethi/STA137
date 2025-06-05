@@ -1,0 +1,106 @@
+% Doc Setup
+\documentclass[11pt]{article}
+\usepackage{setspace} 
+\doublespacing
+\usepackage{amsmath}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{titlesec} % For custom section titles
+\usepackage{lipsum}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{mathptmx} % Times New Roman
+\usepackage{booktabs}
+\usepackage{subcaption}
+
+
+\usepackage[letterpaper,top=1in,bottom=1in,left=1in,right=1in,marginparwidth=1.75cm]{geometry}
+
+
+\title{STA 137 Final Project}
+\author{Ryan Chiang, Manik Sethi, Muhammad Laiq }
+\date{June 2025}
+\usepackage{listings}
+\begin{document}
+
+\maketitle
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{central_africa_republic.jpg}
+    \caption{Central African Lumber}
+    \label{fig:enter-label}
+\end{figure}
+
+
+
+
+\tableofcontents
+
+%Command for sectioning parts
+\newcommand{\numberedpart}[1]{%
+    \part{#1}%
+}
+
+\section{Introduction}
+
+\section{Explanatory Data Analysis}
+
+
+
+\section{Model Selection}
+\subsection{Transformation}
+\subsection{ACF/PACF}
+\subsection{Candidate Models}
+\subsection{Final Model}
+
+\section{Forecast}
+
+\section{Conclusion}
+
+\newpage
+
+\section{References}
+
+\begin{figure}[htbp]
+  \centering
+  %--------------- First image ---------------
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{EDA/GDP_over_Time.png} % replace with your filename
+    \caption{Caption for the first image.}
+    \label{fig:side:a}
+  \end{subfigure}
+  \hfill
+  %--------------- Second image ---------------
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{EDA/Imports_over_Time.png} % replace with your filename
+    \caption{Caption for the second image.}
+    \label{fig:side:b}
+  \end{subfigure}
+
+  \label{fig:side-by-side}
+
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{EDA/GDP_MA5.png} % replace with your filename
+    \caption{Caption for the first image.}
+    \label{fig:side:a}
+  \end{subfigure}
+  \hfill
+  %--------------- Second image ---------------
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{EDA/Imports_MA5.png} % replace with your filename
+    \caption{Caption for the second image.}
+    \label{fig:side:b}
+  \end{subfigure}
+
+  \caption{Graphs for EDA.}
+\end{figure}
+
+
+
+\end{document}
+
