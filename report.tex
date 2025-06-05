@@ -44,8 +44,11 @@
 
 \section{Introduction}
 
-\section{Explanatory Data Analysis}
+Agriculture is a vital part of the Central Africa Republic's (CAR) economy, occupying nearly four-fifths of the national work force (Ref 1). Goods such as crops, timber and diamons are essential, and the hallmark of CAR's economy. However, it is rare that these goods stay within the republic itself. Many of these items make their way out of the country as exports, which in turn provide capital to keep the country running.
+Studying the trends of GDP and Exports over time allows us to be informed when deciding whether or not the Central African Republic should agree to certain trade deals. By knowing how dependent CAR is on the wealth of other countries, a delicate balance between domestic independence and international exploitation can be found. Time series analysis will offer insights into year-long trends of the economy.
 
+
+\section{Explanatory Data Analysis}
 
 
 \section{Model Selection}
@@ -61,6 +64,8 @@
 \newpage
 
 \section{References}
+
+Reference 1: https://www.britannica.com/place/Central-African-Republic/Economy
 
 \begin{figure}[htbp]
   \centering
@@ -82,6 +87,7 @@
 
   \label{fig:side-by-side}
 
+  %--------------- Third image ---------------
   \begin{subfigure}[b]{0.48\textwidth}
     \centering
     \includegraphics[width=\linewidth]{EDA/GDP_MA5.png} % replace with your filename
@@ -89,16 +95,35 @@
     \label{fig:side:a}
   \end{subfigure}
   \hfill
-  %--------------- Second image ---------------
+  %--------------- Fourth image ---------------
   \begin{subfigure}[b]{0.48\textwidth}
     \centering
     \includegraphics[width=\linewidth]{EDA/Imports_MA5.png} % replace with your filename
     \caption{Caption for the second image.}
     \label{fig:side:b}
   \end{subfigure}
+  
+  %--------------- First image ---------------
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{EDA/GDP_RollingSD5.png} % replace with your filename
+    \caption{Caption for the first image.}
+    \label{fig:side:a}
+  \end{subfigure}
+  \hfill
+  %--------------- Second image ---------------
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{EDA/Imports_RollingSD5.png} % replace with your filename
+    \caption{Caption for the second image.}
+    \label{fig:side:b}
+  \end{subfigure}
+
+  \label{fig:side-by-side}
 
   \caption{Graphs for EDA.}
 \end{figure}
+
 
 
 
