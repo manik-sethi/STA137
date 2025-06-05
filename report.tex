@@ -50,6 +50,10 @@ Studying the trends of GDP and Exports over time allows us to be informed when d
 
 \section{Explanatory Data Analysis}
 
+For our explanatory data analysis, we will start by looking at our GDP Data. Plotting our data with 'year' on the x-axis (Fig. 2a), we are able to eye-ball the general trend and seasonality. There seem to be two bumps, each separated by approximately twenty years. To verify that this "seasonality" really does exist, we plot the moving average with a lag of 5 and see the two bumps still exist (Fig. 2c). To check if our GDP has a stable variance overtime, we calculate the standard deviation over five years and overlay the graph on top of our regular time series (Fig. 2e). This plot reveals to us that our standard deviation hovers around \$150 million, but quickly jumps up to values of \$250 million during periods of intense growth or recession.
+
+Moving on to our Imports Data, we start off by creating a simple time series of Imports (in millions) by time. (Fig. 2b). It's difficult to discern a trend, as the number of imports goes down from 1960 to 2000, but then starts to rebound up. Whether this is a part of a season whose cycle is longer that the years recorded is unclear, and will require some research into current CAR economic policies to say for sure. What is clear though, is the volatility of our data (Fig. 2f). Compared to our GDP data, the imports seem a lot more noisy.
+
 
 \section{Model Selection}
 \subsection{Transformation}
@@ -115,6 +119,22 @@ Reference 1: https://www.britannica.com/place/Central-African-Republic/Economy
   \begin{subfigure}[b]{0.48\textwidth}
     \centering
     \includegraphics[width=\linewidth]{EDA/Imports_RollingSD5.png} % replace with your filename
+    \caption{Caption for the second image.}
+    \label{fig:side:b}
+  \end{subfigure}
+  
+   %--------------- First image ---------------
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{EDA/GDP_ACF_PACF.png} % replace with your filename
+    \caption{Caption for the first image.}
+    \label{fig:side:a}
+  \end{subfigure}
+  \hfill
+  %--------------- Second image ---------------
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{EDA/Imports_ACF_PACF.png} % replace with your filename
     \caption{Caption for the second image.}
     \label{fig:side:b}
   \end{subfigure}
