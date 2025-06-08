@@ -1,0 +1,142 @@
+---
+title: "Sta_137_Imports"
+author: "Ryan Chiang"
+date: "2025-06-07"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#install.packages("forecast")
+```
+```{r}
+#install.packages("tseries")
+```
+```{r}
+library(tseries)
+library(forecast)
+```
+
+```{r}
+finalPro_data
+```
+
+
+```{r}
+africa <- finalPro_data
+```
+
+```{r}
+plot(africa$Year, africa$Imports, type = "l", main = "Imports Over Time",
+     xlab = "Year", ylab = "Imports")
+adf.test(africa$Imports)  
+```
+## ^high p value likely not stationary 
+
+
+```{r}
+
+lambda <- BoxCox.lambda(africa$Imports)
+imports_bc <- BoxCox(africa$Imports, lambda)
+plot(africa$Year, imports_bc, type = "l", main = "Box-Cox Transformed Imports")
+adf.test(imports_bc)  
+```
+
+### ^ high p value so likely not stationary, so box-cox transformation did not help 
+```{r}
+diff_imports <- diff(imports_bc)
+plot(diff_imports, type = "l", main = "Differenced Series")
+adf.test(diff_imports)  
+```
+##Data is stationary after we do differencing 
+
+```{r}
+acf(diff_imports, main = "ACF of Differenced Series")
+pacf(diff_imports, main = "PACF of Differenced Series")
+
+```
+## lower aic/bic better, using the cuttoffs from the above plots we chose preliminary coefficients for our models and compared ARIMA, AR, and MA. 
+```{r}
+#from plots:
+d = 1
+q = 2
+p = 1
+fit_arima <- Arima(diff_imports, order = c(p, d, q), lambda = lambda)
+summary(fit_arima)
+```
+
+```{r}
+#from plots:
+d = 1
+q = 2
+p = 0
+fit_ma <- Arima(diff_imports, order = c(p, d, q), lambda = lambda)
+summary(fit_ma)
+```
+
+
+
+```{r}
+#from plots:
+d = 1
+q = 0
+p = 1
+fit_ar <- Arima(diff_imports, order = c(p, d, q), lambda = lambda)
+summary(fit_ar)
+```
+## MA model fits similarly to the arma model, but out of simplicity we decided to fit just the MA model rather than the more complicated ARIMA model. This is especially important because the MA model features a slightly lower BIC value indicating it is less likely for overfitting, something quite important for our interest in the dataset. 
+
+```{r}
+
+aic_values <- c()
+bic_values <- c()
+max_q <- 5  
+d <- 1  
+
+for (q in 0:max_q) {
+  model <- Arima(diff_imports, order = c(0, d, q))
+  aic_values[q + 1] <- AIC(model)
+  bic_values[q + 1] <- BIC(model)
+}
+
+
+model_selection <- data.frame(
+  q = 0:max_q,
+  AIC = aic_values,
+  BIC = bic_values
+)
+print(model_selection)
+
+```
+
+
+###original ma with q = 2 is still best
+
+```{r}
+checkresiduals(fit_ma)  # or auto_fit
+
+```
+##residual look good continue with fit. The plot looks like white noise and our p-value for Ljung-box test indicate they are as well. 
+
+```{r}
+forecast_values <- forecast(fit_ma, h = 10)
+plot(forecast_values)
+forecast_values
+```
+
+## forcasts are quite broad. 
+
+
+
+
+
+
+
+
+
+
